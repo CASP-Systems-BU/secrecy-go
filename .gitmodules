@@ -1,0 +1,4 @@
+[submodule "external/secrecy"]
+	path = external/secrecy
+	url = git@github.com:CASP-Systems-BU/secrecy-private.git
+	branch = SECRECY-53-Malicious_Protocols
