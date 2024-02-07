@@ -16,3 +16,7 @@ func (m *Manager) BuildAndExecute(fileName string, fileContent string, compileCo
 	m.BuildMPCFile(fileName, fileContent, compileConfig)
 	m.Execute(executeConfig)
 }
+
+func (m *Manager) HelloWorld() {
+	println("Hello World")
+}
