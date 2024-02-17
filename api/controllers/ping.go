@@ -8,6 +8,8 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
+// PingGet is a function that handles GET requests to /ping.
+// It returns a JSON response with the request time(seen by server) and the response time.
 func PingGet(c *gin.Context) {
 	var pingRequest models.PingRequest
 
@@ -17,6 +19,8 @@ func PingGet(c *gin.Context) {
 	c.JSON(http.StatusOK, pingRequest)
 }
 
+// PingPost is a function that handles POST requests to /ping.
+// It returns a JSON response with the request time(seen by client) and the response time.
 func PingPost(c *gin.Context) {
 	var pingRequest models.PingRequest
 

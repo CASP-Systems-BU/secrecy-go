@@ -5,6 +5,7 @@ import (
 	"os/exec"
 )
 
+// Executor is a struct that manages the execution of an already compiled MPC file.
 type Executor struct {
 	SecrecyLibraryDirectory string
 	SecrecySourceDirectory  string
@@ -12,6 +13,7 @@ type Executor struct {
 	SecrecyDataDirectory    string
 }
 
+// NewExecutor is a function that creates a new executor with the given secrecy library directory.
 func NewExecutor(secrecyLibraryDirectory string) *Executor {
 	return &Executor{
 		SecrecySourceDirectory: secrecyLibraryDirectory + "/external/secrecy/src/",
@@ -20,6 +22,7 @@ func NewExecutor(secrecyLibraryDirectory string) *Executor {
 	}
 }
 
+// Execute is a function that runs the compiled MPC file using the specified cluster and runtime configuration.
 func (e *Executor) Execute(executeConfig ExecuteConfig) {
 
 	// execute the compiled program

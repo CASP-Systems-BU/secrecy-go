@@ -5,6 +5,7 @@ import (
 	"os/exec"
 )
 
+// Compiler is a struct that manages the compilation for a given MPC file written in CPP.
 type Compiler struct {
 	SecrecyLibraryDirectory string
 	SecrecySourceDirectory  string
@@ -12,6 +13,7 @@ type Compiler struct {
 	SecrecyDataDirectory    string
 }
 
+// CompileConfig is a struct that contains the compilation configuration for the MPC file.
 func NewCompiler(secrecyLibraryDirectory string) *Compiler {
 	return &Compiler{
 		SecrecySourceDirectory: secrecyLibraryDirectory + "/external/secrecy/src/",
@@ -20,6 +22,8 @@ func NewCompiler(secrecyLibraryDirectory string) *Compiler {
 	}
 }
 
+// CreateCPPFile is a function that creates a CPP file with the given name and content.
+// The file is created inside the secrecy source directory.
 func (e *Compiler) CreateCPPFile(fileName string, fileContent string) {
 	// create file with given name and content inside the secrecy source directory
 	cppFile, err := os.Create(e.SecrecySourceDirectory + "/" + fileName + ".cpp")
@@ -37,6 +41,8 @@ func (e *Compiler) CreateCPPFile(fileName string, fileContent string) {
 	cppFile.Sync()
 }
 
+// CreateCMake is a function that creates the build directory for the specified secrecy version.
+// The build directory is created inside the secrecy source directory.
 func (e *Compiler) CreateCMake(compileConfig CompileConfig) {
 	// TODO: can we get rid of deletion step?
 	// make sure the build directory is empty
@@ -63,6 +69,10 @@ func (e *Compiler) CreateCMake(compileConfig CompileConfig) {
 
 }
 
+// BuildMPCFile is a function that builds the MPC file with the given name and content.
+// 1- The file is created inside the secrecy source directory.
+// 2- The build directory is created.
+// 3- The file is built using the make command inside the build directory.
 func (e *Compiler) BuildMPCFile(fileName string, fileContent string, compileConfig CompileConfig) {
 	// Create the file
 	e.CreateCPPFile(fileName, fileContent)

@@ -9,6 +9,8 @@ func init() {
 	config.ReadEnvVariables()
 }
 
+// Creates a new CLI and runs it using the given command line arguments.
+// Run go run main.go --help to see the available commands.
 func main() {
 	cli := cli.NewCli()
 	cli.Initialize()

@@ -6,7 +6,7 @@ import (
 	"github.com/joho/godotenv"
 )
 
-// function to read config.env file
+// ReadEnvVariables is a function that reads the environment variables from the .env file.
 func ReadEnvVariables() {
 	err := godotenv.Load("./config/config.env")
 	if err != nil {
